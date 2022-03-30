@@ -9,6 +9,8 @@ var enemyName = "Roborto";
 var enemyHealth = "50";
 var enemyAttack = "12";
 
+var playerMoney = 10;
+
 // create function
 var fight = function () {
   // Alert player that they are starting a round
@@ -62,7 +64,20 @@ if (promptfight === "FIGHT" || promptfight === "FIGHT") {
 
   // If player choses to skip
   } else if (promptFight === "skip" || promptFight === "SKIP") {
-  window.alert(playerName + " has chosen to skip the fight!");
+    // confirm player wants to skip 
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?")
+
+    // iF yes (true). leave fight
+    if (confirmSkip) {
+      window.alert(playerName + " has chosen to skip the fight. Goodbye!");
+      // Subtract money from playerMoney for skipping
+      playerMoney = playerMoney - 2;
+    }
+    // if no (false), ask question again fight() again
+    else {
+      fight();
+    }
+  }
   } else {
   window.alert("You need to choose a valid option. Try again!");
   }
